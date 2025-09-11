@@ -636,16 +636,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Gerar gráficos
 function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const maxIndividual = 1000;
-    const maxESG = 1000;
 
-    // Converte para % (0-100) para o radialBar
-    // Converte para % e arredonda direto com 1 casa decimal
+// Cálculo percentual de cada pilar
 const ambientalPercent = Math.round((pontosAmbiental / maxIndividual) * 1000) / 10;
 const socialPercent = Math.round((pontosSocial / maxIndividual) * 1000) / 10;
 const governancaPercent = Math.round((pontosGovernanca / maxIndividual) * 1000) / 10;
 
-// ESG total
-const esgPercent = Math.round(((pontosAmbiental*0.3333 + pontosSocial*0.3333 + pontosGovernanca*0.3333)/maxESG) * 1000) / 10;
+// ESG Geral (máximo 1000 pontos)
+const esgPonderado = (pontosAmbiental + pontosSocial + pontosGovernanca) / 3;
+const esgPercent = Math.round((esgPonderado / maxIndividual) * 1000) / 10;
+
 
     function opcoes(label, percent, valorReal, cor){
         return {
@@ -676,8 +676,7 @@ const esgPercent = Math.round(((pontosAmbiental*0.3333 + pontosSocial*0.3333 + p
     new ApexCharts(document.querySelector("#chartAmbiental"), opcoes('Ambiental', ambientalPercent, pontosAmbiental, '#2f7a4e')).render();
     new ApexCharts(document.querySelector("#chartSocial"), opcoes('Social', socialPercent, pontosSocial, '#f18c4a')).render();
     new ApexCharts(document.querySelector("#chartGovernanca"), opcoes('Governança', governancaPercent, pontosGovernanca, '#3a6ff0')).render();
-    new ApexCharts(document.querySelector("#chartESG"), opcoes('ESG Geral', esgPercent, pontosAmbiental + pontosSocial + pontosGovernanca, '#8e44ad')).render();
-}
+    new ApexCharts(document.querySelector("#chartESG"), opcoes('ESG Geral', esgPercent, esgPonderado, '#8e44ad')).render();
 
 
 });
@@ -686,6 +685,7 @@ const esgPercent = Math.round(((pontosAmbiental*0.3333 + pontosSocial*0.3333 + p
 </body>
 
 </html>
+
 
 
 
