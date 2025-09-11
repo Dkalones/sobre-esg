@@ -642,7 +642,7 @@ function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const ambientalPercent = (pontosAmbiental / maxIndividual) * 100;
     const socialPercent = (pontosSocial / maxIndividual) * 100;
     const governancaPercent = (pontosGovernanca / maxIndividual) * 100;
-    const esgPercent = ((pontosAmbiental + pontosSocial + pontosGovernanca) / maxESG) * 100;
+    const esgPercent = ((pontosAmbiental*0,3333 + pontosSocial*0,3333 + pontosGovernanca*0,3333)) * 100;
 
     function opcoes(label, percent, valorReal, cor){
         return {
@@ -683,3 +683,4 @@ function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
 </body>
 
 </html>
+
