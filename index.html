@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Gerar gráficos
 function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const maxIndividual = 1000;
-    const maxESG = 3000;
+    const maxESG = 1000;
 
     // Converte para % (0-100) para o radialBar
     const ambientalPercent = (pontosAmbiental / maxIndividual) * 100;
@@ -683,4 +683,5 @@ function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
 </body>
 
 </html>
+
 
