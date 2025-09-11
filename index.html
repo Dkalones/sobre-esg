@@ -639,10 +639,13 @@ function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const maxESG = 1000;
 
     // Converte para % (0-100) para o radialBar
-    const ambientalPercent = (pontosAmbiental / maxIndividual) * 100;
-    const socialPercent = (pontosSocial / maxIndividual) * 100;
-    const governancaPercent = (pontosGovernanca / maxIndividual) * 100;
-    const esgPercent = ((pontosAmbiental*0.3333 + pontosSocial*0.3333 + pontosGovernanca*0.3333)/maxESG) * 100;
+    // Converte para % e arredonda direto com 1 casa decimal
+const ambientalPercent = Math.round((pontosAmbiental / maxIndividual) * 1000) / 10;
+const socialPercent = Math.round((pontosSocial / maxIndividual) * 1000) / 10;
+const governancaPercent = Math.round((pontosGovernanca / maxIndividual) * 1000) / 10;
+
+// ESG total
+const esgPercent = Math.round(((pontosAmbiental*0.3333 + pontosSocial*0.3333 + pontosGovernanca*0.3333)/maxESG) * 1000) / 10;
 
     function opcoes(label, percent, valorReal, cor){
         return {
@@ -683,6 +686,7 @@ function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
 </body>
 
 </html>
+
 
 
 
