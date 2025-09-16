@@ -77,22 +77,22 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <div class="container" role="main" id="mainContainer">
-  <img src="item digitaos/Captura de tela 2025-08-28 204752.png" alt="Logo Score" class="logo-score"/>
-  <img src="item digitaos/Captura de tela 2025-08-28 204952.png" alt="Logo ESG" class="logo-esg"/>
+  <img src="Captura de tela 2025-08-28 204752.png" alt="Logo Score" class="logo-score"/>
+  <img src="Captura de tela 2025-08-28 204952.png" alt="Logo ESG" class="logo-esg"/>
   <p class="subtitle">Medindo Hoje,<br/>Transformando o Amanhã</p>
 
   <!-- Menu sem clique nos ícones -->
   <div class="btn-list" role="list">
     <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201523.png" alt="Ícone Ambiental" class="btn-icon"/>
+      <img src="Captura de tela 2025-08-28 201523.png" alt="Ícone Ambiental" class="btn-icon"/>
       <span class="btn-text">Ambiental</span>
     </div>
     <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201517.png" alt="Ícone Social" class="btn-icon"/>
+      <img src="Captura de tela 2025-08-28 201517.png" alt="Ícone Social" class="btn-icon"/>
       <span class="btn-text">Social</span>
     </div>
     <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201510.png" alt="Ícone Governança" class="btn-icon"/>
+      <img src="Captura de tela 2025-08-28 201510.png" alt="Ícone Governança" class="btn-icon"/>
       <span class="btn-text">Governança</span>
     </div>
   </div>
@@ -636,16 +636,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Gerar gráficos
 function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const maxIndividual = 1000;
+    const maxESG = 3000;
 
-// Cálculo percentual de cada pilar
-const ambientalPercent = Math.round((pontosAmbiental / maxIndividual) * 1000) / 10;
-const socialPercent = Math.round((pontosSocial / maxIndividual) * 1000) / 10;
-const governancaPercent = Math.round((pontosGovernanca / maxIndividual) * 1000) / 10;
-
-// ESG Geral (máximo 1000 pontos)
-const esgPonderado = (pontosAmbiental + pontosSocial + pontosGovernanca) / 3;
-const esgPercent = Math.round((esgPonderado / maxIndividual) * 1000) / 10;
-
+    // Converte para % (0-100) para o radialBar
+    const ambientalPercent = (pontosAmbiental / maxIndividual) * 100;
+    const socialPercent = (pontosSocial / maxIndividual) * 100;
+    const governancaPercent = (pontosGovernanca / maxIndividual) * 100;
+    const esgPercent = ((pontosAmbiental + pontosSocial + pontosGovernanca) / maxESG) * 100;
 
     function opcoes(label, percent, valorReal, cor){
         return {
@@ -676,17 +673,15 @@ const esgPercent = Math.round((esgPonderado / maxIndividual) * 1000) / 10;
     new ApexCharts(document.querySelector("#chartAmbiental"), opcoes('Ambiental', ambientalPercent, pontosAmbiental, '#2f7a4e')).render();
     new ApexCharts(document.querySelector("#chartSocial"), opcoes('Social', socialPercent, pontosSocial, '#f18c4a')).render();
     new ApexCharts(document.querySelector("#chartGovernanca"), opcoes('Governança', governancaPercent, pontosGovernanca, '#3a6ff0')).render();
-    new ApexCharts(document.querySelector("#chartESG"), opcoes('ESG Geral', esgPercent, esgPonderado, '#8e44ad')).render();
+    new ApexCharts(document.querySelector("#chartESG"), opcoes('ESG Geral', esgPercent, pontosAmbiental + pontosSocial + pontosGovernanca, '#8e44ad')).render();
+}
 
 
 });
 </script>
 
 </body>
-
 </html>
-
-
 
 
 
