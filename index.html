@@ -76,30 +76,60 @@
 <!-- Adicione o script do ApexCharts -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-<div class="container" role="main" id="mainContainer">
-  <img src="item digitaos/Captura de tela 2025-08-28 204752.png" alt="Logo Score" class="logo-score"/>
-  <img src="item digitaos/Captura de tela 2025-08-28 204952.png" alt="Logo ESG" class="logo-esg"/>
-  <p class="subtitle">Medindo Hoje,<br/>Transformando o Amanhã</p>
+  <div class="container" role="main" id="mainContainer">
+    <img src="item digitaos/Captura de tela 2025-08-28 204752.png" alt="Logo Score" class="logo-score"/>
+    <img src="item digitaos/Captura de tela 2025-08-28 204952.png" alt="Logo ESG" class="logo-esg"/>
+    <p class="subtitle">Medindo Hoje,<br/>Transformando o Amanhã</p>
 
-  <!-- Menu sem clique nos ícones -->
-  <div class="btn-list" role="list">
-    <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201523.png" alt="Ícone Ambiental" class="btn-icon"/>
-      <span class="btn-text">Ambiental</span>
+    <!-- Menu com botão Sobre Nós -->
+    <div class="btn-list" role="list">
+      <div class="btn-item" role="listitem">
+        <img src="item digitaos/Captura de tela 2025-08-28 201523.png" alt="Ícone Ambiental" class="btn-icon"/>
+        <span class="btn-text">Ambiental</span>
+      </div>
+      <div class="btn-item" role="listitem">
+        <img src="item digitaos/Captura de tela 2025-08-28 201517.png" alt="Ícone Social" class="btn-icon"/>
+        <span class="btn-text">Social</span>
+      </div>
+      <div class="btn-item" role="listitem">
+        <img src="item digitaos/Captura de tela 2025-08-28 201510.png" alt="Ícone Governança" class="btn-icon"/>
+        <span class="btn-text">Governança</span>
+      </div>
+      <button class="btn-analyze" type="button" id="btnAnalyze">Analisar</button>
+      <button class="btn-analyze" type="button" id="btnSobre">Sobre Nós</button>
     </div>
-    <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201517.png" alt="Ícone Social" class="btn-icon"/>
-      <span class="btn-text">Social</span>
-    </div>
-    <div class="btn-item" role="listitem">
-      <img src="item digitaos/Captura de tela 2025-08-28 201510.png" alt="Ícone Governança" class="btn-icon"/>
-      <span class="btn-text">Governança</span>
-    </div>
+    <p class="footer-text">Desenvolvido por Score ESG.</p>
   </div>
 
-  <button class="btn-analyze" type="button" id="btnAnalyze">Analisar</button>
-  <p class="footer-text">Desenvolvido por Score ESG.</p>
-</div>
+  <!-- Tela Sobre Nós -->
+  <div class="questionnaire-container" id="sobreContainer" style="display:none; max-width:375px;">
+    <h1 style="font-size:20px; font-weight:700; margin-bottom:8px; color:#2f7a4e;">Bem-vindo ao Score ESG</h1>
+    <p style="font-size:14px; color:#4a4a4a; margin-bottom:16px;">Este aplicativo avalia o nível de sustentabilidade do seu empreendimento baseado nas três dimensões da sustentabilidade (Social, Ambiental e Econômico) e na agenda ESG.</p>
+    <div style="margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <img src="item digitaos/Captura de tela 2025-08-28 201523.png" alt="Ambiental" style="width:28px; height:28px;"/>
+        <span style="font-weight:600; color:#2f7a4e;">Ambiental (E)</span>
+      </div>
+      <span style="font-size:13px; color:#4a4a4a; margin-left:38px;">Uso responsável dos recursos naturais e gestão de impactos no meio ambiente.</span>
+    </div>
+    <div style="margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <img src="item digitaos/Captura de tela 2025-08-28 201517.png" alt="Social" style="width:28px; height:28px;"/>
+        <span style="font-weight:600; color:#f18c4a;">Social (S)</span>
+      </div>
+      <span style="font-size:13px; color:#4a4a4a; margin-left:38px;">Relação com colaboradores, comunidade e respeito aos direitos humanos.</span>
+    </div>
+    <div style="margin-bottom:18px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+        <img src="item digitaos/Captura de tela 2025-08-28 201510.png" alt="Governança" style="width:28px; height:28px;"/>
+        <span style="font-weight:600; color:#3a6ff0;">Governança (G)</span>
+      </div>
+      <span style="font-size:13px; color:#4a4a4a; margin-left:38px;">Transparência, ética e boas práticas de gestão.</span>
+    </div>
+    <p style="font-size:13px; color:#4a4a4a; margin-top:18px;">Ao responder as perguntas, você receberá sua pontuação parcial em cada eixo e um Score ESG Global.</p>
+    <p style="font-size:12px; color:#4a4a4a; margin-top:18px;">ESG se refere ao conjunto de práticas de sustentabilidade e responsabilidade que as empresas devem adotar em sua gestão para minimizar seus impactos negativos, criar um mundo mais justo e ter uma administração mais ética.</p>
+    <button class="btn-next" id="btnVoltarInicio">Voltar ao início</button>
+  </div>
  
 <!-- Containers de questionários -->
 <div class="questionnaire-container" id="ambientalContainer">
@@ -579,7 +609,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-
   function showContainer(id) {
     document.querySelectorAll('.questionnaire-container').forEach(c => c.style.display='none');
     document.getElementById(id).style.display='flex';
@@ -601,9 +630,24 @@ document.addEventListener('DOMContentLoaded', () => {
     showContainer('ambientalContainer');
   });
 
+  // Botão Sobre Nós
+  document.getElementById('btnSobre').addEventListener('click', () => {
+    document.getElementById('mainContainer').style.display='none';
+    showContainer('sobreContainer');
+  });
+
+  // Botão Voltar ao início na tela Sobre Nós
+  document.getElementById('btnVoltarInicio').addEventListener('click', () => {
+    document.getElementById('sobreContainer').style.display='none';
+    document.getElementById('mainContainer').style.display='flex';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
   // Botões próximo
   document.querySelectorAll('.btn-next').forEach(btn => {
     btn.addEventListener('click', () => {
+      // Se for botão da tela Sobre Nós, não faz validação
+      if(btn.id === 'btnVoltarInicio') return;
       const container = btn.closest('.questionnaire-container');
       const allAnswered = Array.from(container.querySelectorAll('.options-row')).every(row => row.querySelector('.option.selected'));
       if(!allAnswered){
@@ -634,55 +678,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Gerar gráficos
-function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
+  function gerarGraficos(pontosAmbiental, pontosSocial, pontosGovernanca){
     const maxIndividual = 1000;
     const maxESG = 3000;
-
     // Converte para % (0-100) para o radialBar
     const ambientalPercent = (pontosAmbiental / maxIndividual) * 100;
     const socialPercent = (pontosSocial / maxIndividual) * 100;
     const governancaPercent = (pontosGovernanca / maxIndividual) * 100;
-    const esgPercent = ((pontosAmbiental*0,3333 + pontosSocial*0,3333 + pontosGovernanca*0,3333)) * 100;
-
+    const esgPercent = ((pontosAmbiental*0.3333 + pontosSocial*0.3333 + pontosGovernanca*0.3333)) * 100;
     function opcoes(label, percent, valorReal, cor){
-        return {
-            chart:{ type:'radialBar', height:250 },
-            series:[percent],
-            labels:[label],
-            colors:[cor],
-            plotOptions:{
-                radialBar:{
-                    startAngle:-90,
-                    endAngle:90,
-                    hollow:{ size:'60%' },
-                    track:{ background:'#eee' },
-                    dataLabels:{
-                        name:{ show:true },
-                        value:{
-                            show:true,
-                            fontSize:'16px',
-                            formatter:()=>valorReal // mostra o valor real no centro
-                        }
-                    }
-                }
-            },
-            stroke:{ lineCap:'round' }
-        };
+      return {
+        chart:{ type:'radialBar', height:250 },
+        series:[percent],
+        labels:[label],
+        colors:[cor],
+        plotOptions:{
+          radialBar:{
+            startAngle:-90,
+            endAngle:90,
+            hollow:{ size:'60%' },
+            track:{ background:'#eee' },
+            dataLabels:{
+              name:{ show:true },
+              value:{
+                show:true,
+                fontSize:'16px',
+                formatter:()=>valorReal // mostra o valor real no centro
+              }
+            }
+          }
+        },
+        stroke:{ lineCap:'round' }
+      };
     }
-
     new ApexCharts(document.querySelector("#chartAmbiental"), opcoes('Ambiental', ambientalPercent, pontosAmbiental, '#2f7a4e')).render();
     new ApexCharts(document.querySelector("#chartSocial"), opcoes('Social', socialPercent, pontosSocial, '#f18c4a')).render();
     new ApexCharts(document.querySelector("#chartGovernanca"), opcoes('Governança', governancaPercent, pontosGovernanca, '#3a6ff0')).render();
     new ApexCharts(document.querySelector("#chartESG"), opcoes('ESG Geral', esgPercent, pontosAmbiental + pontosSocial + pontosGovernanca, '#8e44ad')).render();
-}
-
-
+  }
 });
 </script>
 
 </body>
 
 </html>
+
 
 
 
